@@ -1,31 +1,55 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const linkClass = ({ isActive }) =>
   isActive ? "nav-link nav-link-active" : "nav-link";
 
 export default function NavBar() {
+  const { user, clearAuth } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    clearAuth();
+    navigate("/");
+  };
+
   return (
     <nav className="nav">
-      <div className="nav-brand">Destinations</div>
+      <div className="nav-brand">
+        Каталог путешествий
+        {user ? (
+          <span className="nav-status">Вы вошли как {user.name}</span>
+        ) : null}
+      </div>
       <div className="nav-links">
         <NavLink to="/" className={linkClass} end>
-          Home
+          Главная
         </NavLink>
         <NavLink to="/destinations" className={linkClass}>
-          Destinations
+          Направления
         </NavLink>
         <NavLink to="/profile" className={linkClass}>
-          Profile
+          Профиль
         </NavLink>
-        <NavLink to="/admin" className={linkClass}>
-          Admin
-        </NavLink>
-        <NavLink to="/login" className={linkClass}>
-          Login
-        </NavLink>
-        <NavLink to="/register" className={linkClass}>
-          Register
-        </NavLink>
+        {user?.role === "admin" ? (
+          <NavLink to="/admin" className={linkClass}>
+            Админ
+          </NavLink>
+        ) : null}
+        {!user ? (
+          <>
+            <NavLink to="/login" className={linkClass}>
+              Вход
+            </NavLink>
+            <NavLink to="/register" className={linkClass}>
+              Регистрация
+            </NavLink>
+          </>
+        ) : (
+          <button className="nav-button" type="button" onClick={handleLogout}>
+            Выйти
+          </button>
+        )}
       </div>
     </nav>
   );

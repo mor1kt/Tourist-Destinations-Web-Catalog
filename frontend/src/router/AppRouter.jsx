@@ -8,6 +8,7 @@ import Register from "../pages/Register";
 import Profile from "../pages/Profile";
 import AdminPanel from "../pages/AdminPanel";
 import NotFound from "../pages/NotFound";
+import RequireAdmin from "./RequireAdmin";
 
 export default function AppRouter() {
   return (
@@ -20,7 +21,14 @@ export default function AppRouter() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="profile" element={<Profile />} />
-          <Route path="admin" element={<AdminPanel />} />
+          <Route
+            path="admin"
+            element={
+              <RequireAdmin>
+                <AdminPanel />
+              </RequireAdmin>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

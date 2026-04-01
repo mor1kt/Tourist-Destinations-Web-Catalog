@@ -11,7 +11,7 @@ export default function BaseLayout() {
         <Outlet />
       </main>
       <footer className="site-footer">
-        <p>Tourist Destinations Web Catalog</p>
+        <p>Каталог туристических направлений</p>
       </footer>
     </div>
   );

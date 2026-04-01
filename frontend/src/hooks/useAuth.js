@@ -1,15 +1,10 @@
-import { useState } from "react";
+import { useContext } from "react";
+import AuthContext from "../contexts/AuthContext";
 
 export default function useAuth() {
-  const [user, setUser] = useState(null);
-
-  const login = (payload) => {
-    setUser({ id: "1", name: payload.email });
-  };
-
-  const logout = () => {
-    setUser(null);
-  };
-
-  return { user, login, logout };
+  const ctx = useContext(AuthContext);
+  if (!ctx) {
+    throw new Error("useAuth must be used within AuthProvider");
+  }
+  return ctx;
 }
