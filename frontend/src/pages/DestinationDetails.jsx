@@ -32,7 +32,11 @@ export default function DestinationDetails() {
 
   return (
     <section className="details">
-      <div className="details-media" aria-hidden="true" />
+      <div className="details-media" aria-hidden="true">
+        {details.images?.length ? (
+          <img src={details.images[0]} alt={details.title} />
+        ) : null}
+      </div>
       <div className="details-body">
         <p className="eyebrow">Направление</p>
         <h1>{details.title}</h1>

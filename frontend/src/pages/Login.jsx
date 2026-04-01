@@ -26,7 +26,7 @@ export default function Login() {
         setSuccess("Вы вошли в аккаунт.");
         setForm({ email: "", password: "" });
       })
-      .catch((err) => setError(err.message))
+      .catch((err) => setError(err.message || "Ошибка входа. Попробуйте снова."))
       .finally(() => setLoading(false));
   };
 

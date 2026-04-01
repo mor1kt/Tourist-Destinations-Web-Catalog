@@ -26,7 +26,9 @@ export default function Register() {
         setSuccess("Аккаунт создан.");
         setForm({ name: "", email: "", password: "" });
       })
-      .catch((err) => setError(err.message))
+      .catch((err) =>
+        setError(err.message || "Ошибка регистрации. Попробуйте снова.")
+      )
       .finally(() => setLoading(false));
   };
 

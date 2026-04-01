@@ -84,7 +84,15 @@ export default function Home() {
           <div className="card-grid">
             {destinations.slice(0, 6).map((item) => (
               <article key={item._id} className="card">
-                <div className="card-media" aria-hidden="true" />
+                <div
+                  className="card-media"
+                  aria-hidden="true"
+                  style={
+                    item.images?.[0]
+                      ? { backgroundImage: `url(${item.images[0]})` }
+                      : undefined
+                  }
+                />
                 <div className="card-body">
                   <h3 className="card-title">{item.title}</h3>
                   <p className="card-meta">{item.country}</p>
