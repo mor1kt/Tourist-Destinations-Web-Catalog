@@ -8,6 +8,7 @@ import errorHandler from "./middlewares/errorHandler.js";
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 const origins = (process.env.CORS_ORIGIN || "")
@@ -17,7 +18,8 @@ const origins = (process.env.CORS_ORIGIN || "")
 
 app.use(
   cors({
-    origin: origins.length ? origins : true,
+    origin: "https://tourist-destinations-web-catalog-h7bck1k06.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
   })
 );
