@@ -1,6 +1,9 @@
 ## Описание проекта
 **Tourist Destinations Web Catalog** — веб‑приложение для просмотра и управления туристическими направлениями с авторизацией, изображениями и админ‑панелью статистики.
 
+## Ссылка на сайт
+https://tourist-destinations-web-catalog-h7bck1k06.vercel.app/
+
 ## Технологический стек
 - Frontend: React (hooks), Vite, React Router
 - Backend: Node.js, Express
